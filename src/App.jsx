@@ -3,6 +3,7 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import MapBox from "./components/MapBox";
+import RunCard from "./components/RunCard";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -14,7 +15,7 @@ function App() {
       </div>
       <div className="flex w-full h-full">
         <MapBox />
-        <div className="w-[40%] h-[80%] border m-4">hello</div>
+        <RunCard />
       </div>
     </div>
   );

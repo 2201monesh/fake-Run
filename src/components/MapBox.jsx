@@ -4,7 +4,7 @@ import "leaflet/dist/leaflet.css";
 
 function MapBox() {
   return (
-    <div className="w-[60%] h-[80%] border m-4">
+    <div className="w-[65%] h-[80%] border m-4">
       <MapContainer
         center={[28.6139, 77.209]}
         zoom={13}
