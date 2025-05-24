@@ -6,6 +6,7 @@ function RunCard() {
 
   const [selectedDate, setSelectedDate] = useState("");
   const [pace, setPace] = useState(5.5);
+  const [unit, setUnit] = useState("min/km");
 
   const handleDateChange = (e) => {
     setSelectedDate(e.target.value);
@@ -17,6 +18,11 @@ function RunCard() {
     console.log("Pace:", value);
   };
 
+  const handleChange = (e) => {
+    setUnit(e.target.value);
+    console.log("Selected Pace Unit:", e.target.value);
+  };
+
   useEffect(() => {
     console.log("useEffect", isModalOpen);
   }, []);
@@ -26,7 +32,15 @@ function RunCard() {
       <p>Run Details</p>
       <div className="flex w-full items-center justify-between border mt-3 p-2">
         <p>Pace Unit</p>
-        <span>Pace Icon</span>
+        {/* <span>Pace Icon</span> */}
+        <select
+          value={unit}
+          onChange={handleChange}
+          className="border px-2 py-1 rounded text-sm cursor-pointer"
+        >
+          <option value="min/km">min/km</option>
+          <option value="min/miles">min/miles</option>
+        </select>
       </div>
       <div className="run-stats bg-gray-50 w-[100%] h-[40%] border mt-3 p-2">
         <p className="border mb-1">Run Stats</p>
