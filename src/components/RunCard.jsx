@@ -1,11 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useAppContext } from "../context/AppContext";
 
 function RunCard() {
+  const { isModalOpen } = useAppContext();
+
   const [selectedDate, setSelectedDate] = useState("");
+  const [pace, setPace] = useState(5.5);
 
   const handleDateChange = (e) => {
     setSelectedDate(e.target.value);
   };
+
+  const handleSliderChange = (e) => {
+    const value = parseFloat(e.target.value);
+    setPace(value);
+    console.log("Pace:", value);
+  };
+
+  useEffect(() => {
+    console.log("useEffect", isModalOpen);
+  }, []);
 
   return (
     <div className="w-[35%] h-[80vh] border m-4 p-2 overflow-y-scroll">
@@ -18,16 +32,16 @@ function RunCard() {
         <p className="border mb-1">Run Stats</p>
         <div className="grid grid-cols-2 gap-2 h-[85%]">
           <div className="bg-white border p-2 flex items-center justify-center">
-            Stat 1
+            Distance
           </div>
           <div className="bg-white border p-2 flex items-center justify-center">
-            Stat 2
+            Duration
           </div>
           <div className="bg-white border p-2 flex items-center justify-center">
-            Stat 3
+            Elevation
           </div>
           <div className="bg-white border p-2 flex items-center justify-center">
-            Stat 4
+            Speed
           </div>
         </div>
       </div>
@@ -36,7 +50,15 @@ function RunCard() {
           <p>Pace (min/km)</p>
           <p>5.50 min/km</p>
         </div>
-        <p>Slider</p>
+        <input
+          type="range"
+          min="1"
+          max="10"
+          step="0.1"
+          value={pace}
+          onChange={handleSliderChange}
+          className="w-full mt-4 cursor-pointer"
+        />
       </div>
       <div className="w-[100%] border mt-2 p-2">
         <p className="mb-2">Run Name</p>
