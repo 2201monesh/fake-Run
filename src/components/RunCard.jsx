@@ -43,7 +43,7 @@ function RunCard() {
         </select>
       </div>
       <div className="run-stats bg-gray-50 w-[100%] h-[40%] border mt-3 p-2">
-        <p className="border mb-1">Run Stats</p>
+        <p className="mb-1">Run Stats</p>
         <div className="grid grid-cols-2 gap-2 h-[85%]">
           <div className="bg-white border p-2 flex items-center justify-center">
             Distance

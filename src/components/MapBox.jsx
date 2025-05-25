@@ -150,16 +150,6 @@ function MapBox() {
           )}
         </MapContainer>
       </div>
-
-      {/* Make Path Button (outside the map) */}
-      {/* <div>
-        <button
-          onClick={() => makePathFromPoints(points, setPathCoords)}
-          className="bg-black text-white px-4 py-2 rounded"
-        >
-          Make Path
-        </button>
-      </div> */}
     </div>
   );
 }
