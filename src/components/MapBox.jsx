@@ -78,25 +78,26 @@ function MapBox() {
     //   </MapContainer>
     // </div>
     <div className="w-full h-screen p-4">
-      {/* Search UI */}
-      <div className="mb-4 flex gap-2">
-        <input
-          type="text"
-          placeholder="Search location..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="border px-3 py-1 rounded w-[300px]"
-        />
-        <button
-          onClick={handleSearch}
-          className="bg-blue-500 text-white px-4 py-1 rounded"
-        >
-          Search
-        </button>
-      </div>
+      {/* Map Container with relative positioning */}
+      <div className="w-full h-[80vh] border relative">
+        {/* Search box on top of the map */}
+        <div className="absolute top-4 left-20 z-[1000] bg-white p-2 rounded shadow flex gap-2">
+          <input
+            type="text"
+            placeholder="Search location..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="border px-3 py-1 rounded w-[250px]"
+          />
+          <button
+            onClick={handleSearch}
+            className="bg-black cursor-pointer text-white px-4 py-1 rounded"
+          >
+            Search
+          </button>
+        </div>
 
-      {/* Map */}
-      <div className="w-full h-[80vh] border">
+        {/* Leaflet map */}
         <MapContainer
           center={coordinates}
           zoom={13}
