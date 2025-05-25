@@ -4,16 +4,27 @@ import {
   TileLayer,
   Marker,
   Popup,
+  Tooltip,
+  Polyline,
   useMapEvent,
   useMap,
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
-function ClickHandler({ setCoordinates }) {
+// function ClickHandler({ setCoordinates }) {
+//   useMapEvent("click", (e) => {
+//     const { lat, lng } = e.latlng;
+//     setCoordinates([lat, lng]);
+//     console.log("Clicked coordinates:", lat, lng);
+//   });
+//   return null;
+// }
+
+// Handles clicking on the map to add points
+function ClickHandler({ addPoint }) {
   useMapEvent("click", (e) => {
     const { lat, lng } = e.latlng;
-    setCoordinates([lat, lng]);
-    console.log("Clicked coordinates:", lat, lng);
+    addPoint([lat, lng]);
   });
   return null;
 }
@@ -28,6 +39,11 @@ function MapFlyTo({ coordinates }) {
 function MapBox() {
   const [coordinates, setCoordinates] = useState([28.6139, 77.209]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [points, setPoints] = useState([]);
+
+  const addPoint = (point) => {
+    setPoints((prev) => [...prev, point]);
+  };
 
   // Handle search
   const handleSearch = async () => {
@@ -56,27 +72,6 @@ function MapBox() {
   };
 
   return (
-    // <div className="w-[65%] h-[80%] border m-4">
-    //   <MapContainer
-    //     center={coordinates}
-    //     zoom={13}
-    //     style={{ height: "80vh", width: "100%" }}
-    //   >
-    //     <TileLayer
-    //       attribution="&copy; OpenStreetMap contributors"
-    //       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-    //     />
-    //     {/* Handle click events */}
-    //     <ClickHandler setCoordinates={setCoordinates} />
-
-    //     <Marker position={coordinates}>
-    //       <Popup>
-    //         Selected Location: <br /> Lat: {coordinates[0].toFixed(4)} <br />{" "}
-    //         Lng: {coordinates[1].toFixed(4)}
-    //       </Popup>
-    //     </Marker>
-    //   </MapContainer>
-    // </div>
     <div className="w-full h-screen p-4">
       {/* Map Container with relative positioning */}
       <div className="w-full h-[80vh] border relative">
@@ -108,15 +103,29 @@ function MapBox() {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
 
-          <ClickHandler setCoordinates={setCoordinates} />
+          <ClickHandler addPoint={addPoint} />
           <MapFlyTo coordinates={coordinates} />
 
-          <Marker position={coordinates}>
+          {/* Draw markers and tooltips */}
+          {points.map((point, idx) => (
+            <Marker key={idx} position={point}>
+              <Tooltip direction="top" offset={[0, -10]} permanent>
+                Point {idx + 1}
+              </Tooltip>
+            </Marker>
+          ))}
+
+          {/* Draw polyline connecting all points */}
+          {points.length > 1 && (
+            <Polyline positions={points} color="blue" weight={4} />
+          )}
+
+          {/* <Marker position={coordinates}>
             <Popup>
               Location: <br /> Lat: {coordinates[0].toFixed(4)} <br /> Lng:{" "}
               {coordinates[1].toFixed(4)}
             </Popup>
-          </Marker>
+          </Marker> */}
         </MapContainer>
       </div>
     </div>
