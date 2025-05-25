@@ -28,7 +28,7 @@ function RunCard() {
   }, []);
 
   return (
-    <div className="w-[35%] h-[80vh] border m-4 p-2 overflow-y-scroll">
+    <div className="w-[35%] h-[88vh] border m-4 p-2 overflow-y-scroll">
       <p>Run Details</p>
       <div className="flex w-full items-center justify-between border mt-3 p-2">
         <p>Pace Unit</p>
