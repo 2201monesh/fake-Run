@@ -3,10 +3,10 @@ import React, { createContext, useContext, useState } from "react";
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [totalDistance, setTotalDistance] = useState(false);
 
   return (
-    <AppContext.Provider value={{ isModalOpen }}>
+    <AppContext.Provider value={{ totalDistance, setTotalDistance }}>
       {children}
     </AppContext.Provider>
   );

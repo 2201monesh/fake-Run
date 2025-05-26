@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAppContext } from "../context/AppContext";
 
 function RunCard() {
-  const { isModalOpen } = useAppContext();
+  const { totalDistance } = useAppContext();
 
   const [selectedDate, setSelectedDate] = useState("");
   const [pace, setPace] = useState(5.5);
@@ -24,7 +24,7 @@ function RunCard() {
   };
 
   useEffect(() => {
-    console.log("useEffect", isModalOpen);
+    console.log("useEffect", totalDistance);
   }, []);
 
   return (
@@ -46,7 +46,7 @@ function RunCard() {
         <p className="mb-1">Run Stats</p>
         <div className="grid grid-cols-2 gap-2 h-[85%]">
           <div className="bg-white border p-2 flex items-center justify-center">
-            Distance
+            Distance <br /> {totalDistance}km
           </div>
           <div className="bg-white border p-2 flex items-center justify-center">
             Duration

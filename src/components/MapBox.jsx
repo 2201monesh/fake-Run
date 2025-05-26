@@ -10,6 +10,7 @@ import {
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import polyline from "@mapbox/polyline";
+import { useAppContext } from "../context/AppContext";
 
 // Handles clicking on the map to add points
 function ClickHandler({ addPoint }) {
@@ -28,7 +29,7 @@ function MapFlyTo({ coordinates }) {
 }
 
 // Make Path logic extracted outside
-async function makePathFromPoints(points, setPathCoords) {
+async function makePathFromPoints(points, setPathCoords, setTotalDistance) {
   if (points.length < 2) {
     alert("Please select at least two points.");
     return;
@@ -47,6 +48,7 @@ async function makePathFromPoints(points, setPathCoords) {
       const distanceInMeters = data.routes[0].distance;
       const distanceInKm = (distanceInMeters / 1000).toFixed(2);
       console.log(`Total route distance: ${distanceInKm} km`);
+      setTotalDistance(distanceInKm);
     } else {
       alert("Unable to create route.");
     }
@@ -61,6 +63,7 @@ function MapBox() {
   const [searchTerm, setSearchTerm] = useState("");
   const [points, setPoints] = useState([]);
   const [pathCoords, setPathCoords] = useState([]); // Stores routed polyline
+  const { setTotalDistance } = useAppContext();
 
   const addPoint = (point) => {
     setPoints((prev) => [...prev, point]);
@@ -110,7 +113,9 @@ function MapBox() {
         </button>
         <div>
           <button
-            onClick={() => makePathFromPoints(points, setPathCoords)}
+            onClick={() =>
+              makePathFromPoints(points, setPathCoords, setTotalDistance)
+            }
             className="bg-black text-white px-4 py-2 cursor-pointer"
           >
             Make Path
