@@ -44,6 +44,9 @@ async function makePathFromPoints(points, setPathCoords) {
     if (data.routes && data.routes.length > 0) {
       const decoded = polyline.decode(data.routes[0].geometry); // [lat, lng]
       setPathCoords(decoded);
+      const distanceInMeters = data.routes[0].distance;
+      const distanceInKm = (distanceInMeters / 1000).toFixed(2);
+      console.log(`Total route distance: ${distanceInKm} km`);
     } else {
       alert("Unable to create route.");
     }
