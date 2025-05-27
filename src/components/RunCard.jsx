@@ -2,11 +2,25 @@ import React, { useEffect, useState } from "react";
 import { useAppContext } from "../context/AppContext";
 
 function RunCard() {
-  const { totalDistance } = useAppContext();
-
-  const [selectedDate, setSelectedDate] = useState("");
-  const [pace, setPace] = useState(5.5);
-  const [unit, setUnit] = useState("min/km");
+  const {
+    totalDistance,
+    unit,
+    setUnit,
+    duration,
+    setDuration,
+    stepsTaken,
+    setStepsTaken,
+    speed,
+    setSpeed,
+    pace,
+    setPace,
+    runName,
+    setRunName,
+    setSelectedDate,
+    selectedDate,
+    description,
+    setDescription,
+  } = useAppContext();
 
   const handleDateChange = (e) => {
     setSelectedDate(e.target.value);
@@ -32,7 +46,6 @@ function RunCard() {
       <p>Run Details</p>
       <div className="flex w-full items-center justify-between mt-3 p-2">
         <p>Pace Unit</p>
-        {/* <span>Pace Icon</span> */}
         <select
           value={unit}
           onChange={handleChange}
@@ -49,20 +62,22 @@ function RunCard() {
             Distance <br /> {totalDistance} {totalDistance ? "km" : ""}
           </div>
           <div className="bg-white border p-2 flex items-center justify-center">
-            Duration
+            Duration <br /> {duration} {duration ? "mins" : ""}
           </div>
           <div className="bg-white border p-2 flex items-center justify-center">
-            Elevation
+            Steps <br /> {stepsTaken}
           </div>
           <div className="bg-white border p-2 flex items-center justify-center">
-            Speed
+            Speed <br /> {speed} {speed ? unit : ""}
           </div>
         </div>
       </div>
       <div className="pace-maker w-[100%] mt-2 p-2">
         <div className="flex items-center justify-between">
-          <p>Pace (min/km)</p>
-          <p>5.50 min/km</p>
+          <p>Pace - {unit}</p>
+          <p>
+            {pace} {unit}
+          </p>
         </div>
         <input
           type="range"
@@ -77,9 +92,11 @@ function RunCard() {
       <div className="w-[100%] mt-2 p-2">
         <p className="mb-2">Run Name</p>
         <input
+          value={runName}
           type="text"
           className="border w-full px-2 py-1"
           placeholder="Enter Run Name here..."
+          onChange={(e) => setRunName(e.target.value)}
         />
       </div>
       <div className="w-[100%] mt-2 p-2">
@@ -102,9 +119,11 @@ function RunCard() {
       <div className="w-[100%] mt-2 p-2">
         <p className="mb-1">Description</p>
         <textarea
+          value={description}
           name="textarea"
           className="w-full p-2 text-sm border"
           placeholder="Enter description here..."
+          onChange={(e) => setDescription(e.target.value)}
         ></textarea>
       </div>
       <div className="w-[100%] mt-2 p-2">

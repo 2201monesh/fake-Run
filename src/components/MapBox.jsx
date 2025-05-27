@@ -29,7 +29,12 @@ function MapFlyTo({ coordinates }) {
 }
 
 // Make Path logic extracted outside
-async function makePathFromPoints(points, setPathCoords, setTotalDistance) {
+async function makePathFromPoints(
+  points,
+  setPathCoords,
+  setTotalDistance,
+  setElevation
+) {
   if (points.length < 2) {
     alert("Please select at least two points.");
     return;
@@ -63,7 +68,18 @@ function MapBox() {
   const [searchTerm, setSearchTerm] = useState("");
   const [points, setPoints] = useState([]);
   const [pathCoords, setPathCoords] = useState([]); // Stores routed polyline
-  const { setTotalDistance } = useAppContext();
+  const {
+    setTotalDistance,
+    setElevation,
+    setDuration,
+    setStepsTaken,
+    setSpeed,
+    setPace,
+    setRunName,
+    setSelectedDate,
+    setDescription,
+    setUnit,
+  } = useAppContext();
 
   const addPoint = (point) => {
     setPoints((prev) => [...prev, point]);
@@ -100,6 +116,14 @@ function MapBox() {
     setSearchTerm("");
     setTotalDistance(""); // or setTotalDistance(0);
     setCoordinates([28.6139, 77.209]); // Optional: reset to default center
+    setDescription("");
+    setSelectedDate("");
+    setRunName("");
+    setPace(5.5);
+    setSpeed();
+    setStepsTaken();
+    setDuration();
+    setUnit("min/km");
   };
 
   return (
@@ -122,7 +146,12 @@ function MapBox() {
         <div>
           <button
             onClick={() =>
-              makePathFromPoints(points, setPathCoords, setTotalDistance)
+              makePathFromPoints(
+                points,
+                setPathCoords,
+                setTotalDistance,
+                setElevation
+              )
             }
             className="bg-black text-white px-4 py-2 cursor-pointer mr-2"
           >
