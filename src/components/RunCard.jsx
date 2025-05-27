@@ -30,19 +30,19 @@ function RunCard() {
   return (
     <div className="w-[35%] h-[88vh] border m-4 p-2 overflow-y-scroll">
       <p>Run Details</p>
-      <div className="flex w-full items-center justify-between border mt-3 p-2">
+      <div className="flex w-full items-center justify-between mt-3 p-2">
         <p>Pace Unit</p>
         {/* <span>Pace Icon</span> */}
         <select
           value={unit}
           onChange={handleChange}
-          className="border px-2 py-1 rounded text-sm cursor-pointer"
+          className="border px-2 py-1 text-sm cursor-pointer outline-none"
         >
           <option value="min/km">min/km</option>
           <option value="min/miles">min/miles</option>
         </select>
       </div>
-      <div className="run-stats bg-gray-50 w-[100%] h-[40%] border mt-3 p-2">
+      <div className="run-stats bg-gray-50 w-[100%] h-[40%] mt-3 p-2">
         <p className="mb-1">Run Stats</p>
         <div className="grid grid-cols-2 gap-2 h-[85%]">
           <div className="bg-white border p-2 flex items-center justify-center">
@@ -59,7 +59,7 @@ function RunCard() {
           </div>
         </div>
       </div>
-      <div className="pace-maker w-[100%] border mt-2 p-2">
+      <div className="pace-maker w-[100%] mt-2 p-2">
         <div className="flex items-center justify-between">
           <p>Pace (min/km)</p>
           <p>5.50 min/km</p>
@@ -74,7 +74,7 @@ function RunCard() {
           className="w-full mt-4 cursor-pointer"
         />
       </div>
-      <div className="w-[100%] border mt-2 p-2">
+      <div className="w-[100%] mt-2 p-2">
         <p className="mb-2">Run Name</p>
         <input
           type="text"
@@ -82,7 +82,7 @@ function RunCard() {
           placeholder="Enter Run Name here..."
         />
       </div>
-      <div className="w-[100%] border mt-2 p-2">
+      <div className="w-[100%] mt-2 p-2">
         <div className="w-full items-center justify-between flex">
           <p>Select Date</p>
           <input
@@ -99,7 +99,7 @@ function RunCard() {
           </div>
         )}
       </div>
-      <div className="w-[100%] border mt-2 p-2">
+      <div className="w-[100%] mt-2 p-2">
         <p className="mb-1">Description</p>
         <textarea
           name="textarea"
@@ -107,7 +107,7 @@ function RunCard() {
           placeholder="Enter description here..."
         ></textarea>
       </div>
-      <div className="w-[100%] border mt-2 p-2">
+      <div className="w-[100%] mt-2 p-2">
         <button className="w-full border py-1 bg-black text-white cursor-pointer">
           Make Run File
         </button>
