@@ -94,6 +94,14 @@ function MapBox() {
     }
   };
 
+  const handleReset = () => {
+    setPoints([]);
+    setPathCoords([]);
+    setSearchTerm("");
+    setTotalDistance(""); // or setTotalDistance(0);
+    setCoordinates([28.6139, 77.209]); // Optional: reset to default center
+  };
+
   return (
     <div className="w-full h-screen p-4 flex flex-col gap-4">
       {/* Search Bar */}
@@ -116,9 +124,15 @@ function MapBox() {
             onClick={() =>
               makePathFromPoints(points, setPathCoords, setTotalDistance)
             }
-            className="bg-black text-white px-4 py-2 cursor-pointer"
+            className="bg-black text-white px-4 py-2 cursor-pointer mr-2"
           >
             Make Path
+          </button>
+          <button
+            onClick={handleReset}
+            className="bg-black text-white px-4 py-2 cursor-pointer"
+          >
+            Reset
           </button>
         </div>
       </div>
