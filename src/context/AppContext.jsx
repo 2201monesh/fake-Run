@@ -3,7 +3,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  const [totalDistance, setTotalDistance] = useState("");
+  const [totalDistance, setTotalDistance] = useState();
   const [unit, setUnit] = useState("min/km");
   const [duration, setDuration] = useState();
   const [stepsTaken, setStepsTaken] = useState();
@@ -12,6 +12,7 @@ export const AppProvider = ({ children }) => {
   const [runName, setRunName] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
   const [description, setDescription] = useState("");
+  const [showMarkers, setShowMarkers] = useState(true);
 
   const calculateDurationAndSpeed = ({
     pace,
@@ -68,6 +69,8 @@ export const AppProvider = ({ children }) => {
         selectedDate,
         description,
         setDescription,
+        showMarkers,
+        setShowMarkers,
       }}
     >
       {children}

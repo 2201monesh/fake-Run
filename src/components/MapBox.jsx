@@ -79,6 +79,8 @@ function MapBox() {
     setSelectedDate,
     setDescription,
     setUnit,
+    showMarkers,
+    setShowMarkers,
   } = useAppContext();
 
   const addPoint = (point) => {
@@ -143,7 +145,7 @@ function MapBox() {
         >
           Search
         </button>
-        <div>
+        <div className="flex items-center">
           <button
             onClick={() =>
               makePathFromPoints(
@@ -159,10 +161,25 @@ function MapBox() {
           </button>
           <button
             onClick={handleReset}
-            className="bg-black text-white px-4 py-2 cursor-pointer"
+            className="bg-black text-white px-4 py-2 cursor-pointer mr-2"
           >
             Reset
           </button>
+          <div className="ml-2">
+            <label className="flex items-center gap-2">
+              <span className="text-sm text-gray-700">Show Pointers</span>
+              <label className="relative inline-block w-10 h-6 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={showMarkers}
+                  onChange={() => setShowMarkers((prev) => !prev)}
+                  className="sr-only peer"
+                />
+                <div className="w-10 h-6 bg-gray-300 rounded-full peer peer-checked:bg-green-500 transition-colors"></div>
+                <div className="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full transition-transform peer-checked:translate-x-4"></div>
+              </label>
+            </label>
+          </div>
         </div>
       </div>
 
@@ -182,13 +199,14 @@ function MapBox() {
           <MapFlyTo coordinates={coordinates} />
 
           {/* Markers */}
-          {points.map((point, idx) => (
-            <Marker key={idx} position={point}>
-              <Tooltip direction="top" offset={[0, -10]} permanent>
-                Point {idx + 1}
-              </Tooltip>
-            </Marker>
-          ))}
+          {showMarkers &&
+            points.map((point, idx) => (
+              <Marker key={idx} position={point}>
+                <Tooltip direction="top" offset={[0, -10]} permanent>
+                  Point {idx + 1}
+                </Tooltip>
+              </Marker>
+            ))}
 
           {/* Direct Polyline */}
           {points.length > 1 && (

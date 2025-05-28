@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useAppContext } from "../context/AppContext";
+import { GiPathDistance } from "react-icons/gi";
+import { MdOutlineTimer } from "react-icons/md";
+import { IoFootstepsOutline } from "react-icons/io5";
+import { SiSpeedtest } from "react-icons/si";
 
 function RunCard() {
   const {
@@ -58,17 +62,37 @@ function RunCard() {
       <div className="run-stats bg-gray-50 w-[100%] h-[40%] mt-3 p-2">
         <p className="mb-1">Run Stats</p>
         <div className="grid grid-cols-2 gap-2 h-[85%]">
-          <div className="bg-white border p-2 flex items-center justify-center">
-            Distance <br /> {totalDistance} {totalDistance ? "km" : ""}
+          <div className="bg-white border p-2 flex items-center justify-center flex-col">
+            <span>
+              <GiPathDistance size={20} />
+            </span>
+            <p className="text-center">
+              Distance <br /> {totalDistance} {totalDistance ? "km" : ""}
+            </p>
           </div>
-          <div className="bg-white border p-2 flex items-center justify-center">
-            Duration <br /> {duration} {duration ? "mins" : ""}
+          <div className="bg-white border p-2 flex items-center justify-center flex-col">
+            <span>
+              <MdOutlineTimer size={20} />
+            </span>
+            <p className="text-center">
+              Duration <br /> {duration} {duration ? "mins" : ""}
+            </p>
           </div>
-          <div className="bg-white border p-2 flex items-center justify-center">
-            Steps <br /> {stepsTaken}
+          <div className="bg-white border p-2 flex items-center justify-center flex-col">
+            <span>
+              <IoFootstepsOutline size={20} />
+            </span>
+            <p className="text-center">
+              Steps <br /> {stepsTaken}
+            </p>
           </div>
-          <div className="bg-white border p-2 flex items-center justify-center">
-            Speed <br /> {speed} {speed ? unit : ""}
+          <div className="bg-white border p-2 flex items-center justify-center flex-col">
+            <span>
+              <SiSpeedtest size={20} />
+            </span>
+            <p className="text-center">
+              Speed <br /> {speed} {speed ? unit : ""}
+            </p>
           </div>
         </div>
       </div>
