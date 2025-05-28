@@ -3,7 +3,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  const [totalDistance, setTotalDistance] = useState();
+  const [totalDistance, setTotalDistance] = useState("");
   const [unit, setUnit] = useState("min/km");
   const [duration, setDuration] = useState();
   const [stepsTaken, setStepsTaken] = useState();
@@ -13,6 +13,11 @@ export const AppProvider = ({ children }) => {
   const [selectedDate, setSelectedDate] = useState("");
   const [description, setDescription] = useState("");
   const [showMarkers, setShowMarkers] = useState(true);
+  const [firstLocationName, setFirstLocationName] = useState("");
+  const [coordinates, setCoordinates] = useState([28.6139, 77.209]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [points, setPoints] = useState([]);
+  const [pathCoords, setPathCoords] = useState([]); // Stores routed polyline
 
   const calculateDurationAndSpeed = ({
     pace,
@@ -71,6 +76,16 @@ export const AppProvider = ({ children }) => {
         setDescription,
         showMarkers,
         setShowMarkers,
+        firstLocationName,
+        setFirstLocationName,
+        coordinates,
+        setCoordinates,
+        searchTerm,
+        setSearchTerm,
+        points,
+        setPoints,
+        pathCoords,
+        setPathCoords,
       }}
     >
       {children}

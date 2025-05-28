@@ -64,10 +64,6 @@ async function makePathFromPoints(
 }
 
 function MapBox() {
-  const [coordinates, setCoordinates] = useState([28.6139, 77.209]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [points, setPoints] = useState([]);
-  const [pathCoords, setPathCoords] = useState([]); // Stores routed polyline
   const {
     setTotalDistance,
     setElevation,
@@ -81,10 +77,36 @@ function MapBox() {
     setUnit,
     showMarkers,
     setShowMarkers,
+    setFirstLocationName,
+    coordinates,
+    setCoordinates,
+    searchTerm,
+    setSearchTerm,
+    points,
+    setPoints,
+    pathCoords,
+    setPathCoords,
   } = useAppContext();
 
-  const addPoint = (point) => {
+  const addPoint = async (point) => {
     setPoints((prev) => [...prev, point]);
+
+    // Only fetch location name for the first point
+    if (points.length === 0) {
+      try {
+        const [lat, lng] = point;
+        const response = await fetch(
+          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`
+        );
+        const data = await response.json();
+        const name = data?.address?.city || "Unknown location";
+        setFirstLocationName(name);
+        console.log("📍 First point location:", name);
+      } catch (error) {
+        console.error("Reverse geocoding error:", error);
+        setFirstLocationName("Error fetching location");
+      }
+    }
   };
 
   const handleSearch = async () => {
@@ -116,8 +138,8 @@ function MapBox() {
     setPoints([]);
     setPathCoords([]);
     setSearchTerm("");
-    setTotalDistance(""); // or setTotalDistance(0);
-    setCoordinates([28.6139, 77.209]); // Optional: reset to default center
+    setTotalDistance("");
+    setCoordinates([28.6139, 77.209]);
     setDescription("");
     setSelectedDate("");
     setRunName("");
