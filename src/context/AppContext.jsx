@@ -18,6 +18,7 @@ export const AppProvider = ({ children }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [points, setPoints] = useState([]);
   const [pathCoords, setPathCoords] = useState([]); // Stores routed polyline
+  const [submitted, setSubmitted] = useState(false);
 
   const calculateDurationAndSpeed = ({
     pace,
@@ -86,6 +87,8 @@ export const AppProvider = ({ children }) => {
         setPoints,
         pathCoords,
         setPathCoords,
+        submitted,
+        setSubmitted,
       }}
     >
       {children}

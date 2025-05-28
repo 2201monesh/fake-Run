@@ -24,6 +24,7 @@ function RunCard() {
     selectedDate,
     description,
     setDescription,
+    setSubmitted,
   } = useAppContext();
 
   const [errors, setErrors] = useState({
@@ -80,6 +81,7 @@ function RunCard() {
     if (!hasError) {
       // Submit logic here
       console.log("Run data valid, proceed to save.");
+      setSubmitted(true);
     }
   };
 
