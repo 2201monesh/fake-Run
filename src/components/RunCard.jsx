@@ -26,8 +26,17 @@ function RunCard() {
     setDescription,
   } = useAppContext();
 
+  const [errors, setErrors] = useState({
+    runName: "",
+    selectedDate: "",
+    description: "",
+  });
+
   const handleDateChange = (e) => {
     setSelectedDate(e.target.value);
+    if (errors.selectedDate) {
+      setErrors((prev) => ({ ...prev, selectedDate: "" }));
+    }
   };
 
   const handleSliderChange = (e) => {
@@ -44,6 +53,35 @@ function RunCard() {
   useEffect(() => {
     console.log("useEffect", totalDistance);
   }, []);
+
+  const handleSubmit = () => {
+    let hasError = false;
+    const newErrors = {
+      runName: "",
+      selectedDate: "",
+      description: "",
+    };
+
+    if (!runName.trim()) {
+      newErrors.runName = "Run name is required.";
+      hasError = true;
+    }
+    if (!selectedDate) {
+      newErrors.selectedDate = "Please select a date.";
+      hasError = true;
+    }
+    if (!description.trim()) {
+      newErrors.description = "Description is required.";
+      hasError = true;
+    }
+
+    setErrors(newErrors);
+
+    if (!hasError) {
+      // Submit logic here
+      console.log("Run data valid, proceed to save.");
+    }
+  };
 
   return (
     <div className="w-[35%] h-[88vh] border m-4 p-2 overflow-y-scroll">
@@ -120,8 +158,17 @@ function RunCard() {
           type="text"
           className="border w-full px-2 py-1"
           placeholder="Enter Run Name here..."
-          onChange={(e) => setRunName(e.target.value)}
+          //   onChange={(e) => setRunName(e.target.value) }
+          onChange={(e) => {
+            setRunName(e.target.value);
+            if (errors.runName) {
+              setErrors((prev) => ({ ...prev, runName: "" }));
+            }
+          }}
         />
+        {errors.runName && (
+          <p className="text-red-500 text-sm mt-1">{errors.runName}</p>
+        )}
       </div>
       <div className="w-[100%] mt-2 p-2">
         <div className="w-full items-center justify-between flex">
@@ -132,6 +179,9 @@ function RunCard() {
             className="border px-2 py-1 rounded"
           />
         </div>
+        {errors.selectedDate && (
+          <p className="text-red-500 text-sm mt-1">{errors.selectedDate}</p>
+        )}
 
         {selectedDate && (
           <div className="mt-4 p-2 bg-gray-100 rounded border">
@@ -147,11 +197,23 @@ function RunCard() {
           name="textarea"
           className="w-full p-2 text-sm border"
           placeholder="Enter description here..."
-          onChange={(e) => setDescription(e.target.value)}
+          //   onChange={(e) => setDescription(e.target.value)}
+          onChange={(e) => {
+            setDescription(e.target.value);
+            if (errors.description) {
+              setErrors((prev) => ({ ...prev, description: "" }));
+            }
+          }}
         ></textarea>
+        {errors.description && (
+          <p className="text-red-500 text-sm mt-1">{errors.description}</p>
+        )}
       </div>
       <div className="w-[100%] mt-2 p-2">
-        <button className="w-full border py-1 bg-black text-white cursor-pointer">
+        <button
+          className="w-full border py-1 bg-black text-white cursor-pointer"
+          onClick={handleSubmit}
+        >
           Make Run File
         </button>
       </div>
