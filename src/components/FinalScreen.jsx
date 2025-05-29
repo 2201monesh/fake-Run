@@ -1,7 +1,32 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useAppContext } from "../context/AppContext";
-import { MapContainer, TileLayer, Polyline } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Polyline,
+  Marker,
+  Tooltip,
+  useMap,
+} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+
+function ZoomAnimation({ targetZoom = 13 }) {
+  const map = useMap();
+
+  useEffect(() => {
+    // Start zoomed out
+    map.setZoom(3);
+
+    // Smooth zoom to target
+    setTimeout(() => {
+      map.flyTo(map.getCenter(), targetZoom, {
+        duration: 2, // seconds
+      });
+    }, 500); // half-second delay before animating
+  }, [map, targetZoom]);
+
+  return null;
+}
 
 function FinalScreen() {
   const {
@@ -15,9 +40,9 @@ function FinalScreen() {
   } = useAppContext();
 
   const cards = [
-    { title: "Distance", value: `${totalDistance} km` },
-    { title: "Duration", value: `${duration} mins` },
-    { title: "Steps", value: `${stepsTaken}` },
+    { title: "Distance covered", value: `${totalDistance} km` },
+    { title: "Total Duration", value: `${duration} mins` },
+    { title: "Steps taken", value: `${stepsTaken}` },
     { title: "Speed", value: `${speed} ${unit}` },
   ];
 
@@ -28,7 +53,7 @@ function FinalScreen() {
       <div className="w-[65%] h-[75%] border overflow-hidden mt-6">
         <MapContainer
           center={coordinates}
-          zoom={13}
+          zoom={3}
           scrollWheelZoom={true}
           dragging={true}
           doubleClickZoom={true}
@@ -36,10 +61,18 @@ function FinalScreen() {
           attributionControl={false}
           style={{ width: "100%", height: "100%" }}
         >
+          <ZoomAnimation targetZoom={13} />
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution=""
           />
+          {pathCoords.length > 0 && (
+            <Marker position={pathCoords[0]}>
+              <Tooltip direction="top" offset={[0, -10]} permanent>
+                Starting Point
+              </Tooltip>
+            </Marker>
+          )}
           {pathCoords.length > 1 && (
             <Polyline positions={pathCoords} color="blue" weight={4} />
           )}
@@ -53,8 +86,10 @@ function FinalScreen() {
             key={index}
             className="w-48 h-32 rounded-lg flex flex-col items-center text-center"
           >
-            <h3 className="font-semibold text-lg">{card.title}</h3>
-            <p className="text-sm mt-2 text-gray-600">{card.value}</p>
+            <h3 className="font-semibold text-md text-gray-600">
+              {card.title}
+            </h3>
+            <p className="text-xl mt-2 font-semibold">{card.value}</p>
           </div>
         ))}
       </div>
