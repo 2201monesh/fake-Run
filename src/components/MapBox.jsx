@@ -151,9 +151,11 @@ function MapBox() {
   };
 
   return (
-    <div className="w-full h-screen p-4 flex flex-col gap-4">
+    // <div className="w-full h-screen p-4 flex flex-col gap-4">
+    <div className="w-full h-[60vh] lg:h-screen p-4 flex flex-col gap-4">
       {/* Search Bar */}
-      <div className="flex gap-2">
+      {/* <div className="flex gap-2"> */}
+      <div className="flex flex-col sm:flex-row gap-2">
         <input
           type="text"
           placeholder="Search location..."
@@ -206,7 +208,8 @@ function MapBox() {
       </div>
 
       {/* Map Container */}
-      <div className="w-full h-[80vh] border">
+      {/* <div className="w-full h-[80vh] border"> */}
+      <div className="w-full h-[40vh] lg:h-[80vh] border">
         <MapContainer
           center={coordinates}
           zoom={13}

@@ -11,30 +11,13 @@ function App() {
   const { submitted } = useAppContext();
 
   return (
-    // <div className="w-full min-h-screen items-center justify-center flex flex-col">
-    //   <div className="w-full border-b border-black px-4 py-2">
-    //     <p className="text-2xl">FakeRun Stats</p>
-    //   </div>
-    //   {!submitted && (
-    //     <div className="flex w-full h-full">
-    //       <MapBox />
-    //       <RunCard />
-    //     </div>
-    //   )}
-
-    //   {submitted && (
-    //     <div className="flex-grow">
-    //       <FinalScreen />
-    //     </div>
-    //   )}
-    // </div>
     <div className="w-[100%] h-[100%] flex flex-col">
       <div className="w-full border-b border-black px-4 py-2">
         <p className="text-2xl">FakeRun Stats</p>
       </div>
       <div className="flex-grow w-[100%] h-[100%]">
         {!submitted ? (
-          <div className="flex w-full h-full">
+          <div className="flex w-full h-full flex-col lg:flex-row">
             <MapBox />
             <RunCard />
           </div>
