@@ -87,7 +87,8 @@ function RunCard() {
 
   return (
     // <div className="w-[35%] h-[88vh] border m-4 p-2 overflow-y-scroll">
-    <div className="w-full lg:w-[35%] h-[70vh] lg:h-[88vh] border m-4 p-2 overflow-y-scroll">
+    // <div className="w-full lg:w-[35%] h-[70vh] lg:h-[88vh] border m-4 p-2 overflow-y-scroll">
+    <div className="w-full lg:w-[35%] lg:h-[88vh] border m-4 p-2 overflow-y-auto">
       <p>Run Details</p>
       <div className="flex w-full items-center justify-between mt-3 p-2">
         <p>Pace Unit</p>
@@ -100,7 +101,7 @@ function RunCard() {
           <option value="min/miles">min/miles</option>
         </select>
       </div>
-      <div className="run-stats bg-gray-50 w-[100%] h-[40%] mt-3 p-2 mb-6 sm:mb-4">
+      <div className="run-stats bg-gray-50 w-[100%] mt-3 p-2 mb-6 sm:mb-4 lg:h-[40%]">
         <p className="mb-1">Run Stats</p>
         <div className="grid grid-cols-2 gap-2 h-[85%]">
           <div className="bg-white border p-2 flex items-center justify-center flex-col">
@@ -137,7 +138,7 @@ function RunCard() {
           </div>
         </div>
       </div>
-      <div className="pace-maker w-full mt-10 sm:mt-4 p-2">
+      <div className="pace-maker w-full mt-10 sm:mt-2 p-2">
         <div className="flex items-center justify-between">
           <p>Pace - {unit}</p>
           <p>

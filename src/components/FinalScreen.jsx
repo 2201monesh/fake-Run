@@ -75,9 +75,10 @@ function FinalScreen() {
   return (
     <div className="w-[100%] h-[100%] flex flex-col justify-center items-center border">
       <div className="w-[65%] h-[75%] border overflow-hidden mt-6 relative">
-        <div className="absolute top-2 right-2 bg-white bg-opacity-80 text-sm px-3 py-2 rounded shadow z-[1000] max-w-xs">
+        <div className="lg:absolute lg:top-2 lg:right-2 lg:bg-opacity-80 lg:z-[1000] bg-white text-sm px-3 py-2 rounded shadow max-w-xs mt-2">
           <p className="flex items-center font-semibold text-gray-700 mb-1">
-            <MdLocationOn className="mr-1 text-red-500" /> Location: {runName}
+            {/* <MdLocationOn className="mr-1 text-red-500" /> Location: {runName} */}
+            Run Name: {runName}
           </p>
           <p className="text-gray-600 break-words">
             <span className="font-semibold">Description:</span> {description}
