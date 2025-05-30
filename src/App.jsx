@@ -8,12 +8,24 @@ import { useAppContext } from "./context/AppContext";
 import FinalScreen from "./components/FinalScreen";
 
 function App() {
-  const { submitted } = useAppContext();
+  const { submitted, setSubmitted } = useAppContext();
+
+  const handleClick = () => {
+    setSubmitted(false);
+  };
 
   return (
     <div className="w-[100%] h-[100%] flex flex-col">
-      <div className="w-full border-b border-black px-4 py-2">
+      <div className="w-full border-b border-black px-4 py-2 flex items-center justify-between">
         <p className="text-2xl">FakeRun Stats</p>
+        {submitted && (
+          <button
+            className="bg-black text-white px-2 py-1 cursor-pointer"
+            onClick={handleClick}
+          >
+            Back to Home
+          </button>
+        )}
       </div>
       <div className="flex-grow w-[100%] h-[100%]">
         {!submitted ? (

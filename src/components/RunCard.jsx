@@ -100,7 +100,7 @@ function RunCard() {
           <option value="min/miles">min/miles</option>
         </select>
       </div>
-      <div className="run-stats bg-gray-50 w-[100%] h-[40%] mt-3 p-2">
+      <div className="run-stats bg-gray-50 w-[100%] h-[40%] mt-3 p-2 mb-6 sm:mb-4">
         <p className="mb-1">Run Stats</p>
         <div className="grid grid-cols-2 gap-2 h-[85%]">
           <div className="bg-white border p-2 flex items-center justify-center flex-col">
@@ -137,7 +137,7 @@ function RunCard() {
           </div>
         </div>
       </div>
-      <div className="pace-maker w-full mt-10 sm:mt-2 p-2">
+      <div className="pace-maker w-full mt-10 sm:mt-4 p-2">
         <div className="flex items-center justify-between">
           <p>Pace - {unit}</p>
           <p>
