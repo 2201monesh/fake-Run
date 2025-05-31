@@ -152,7 +152,8 @@ function MapBox() {
 
   return (
     // <div className="w-full h-screen p-4 flex flex-col gap-4">
-    <div className="w-full h-[60vh] lg:h-[85vh] p-4 flex flex-col gap-4 border my-4 ml-4 mr-2 bg-white rounded">
+    // <div className="w-full h-[60vh] lg:h-[85vh] p-4 flex flex-col gap-4 border my-4 ml-4 mr-2 bg-white rounded">
+    <div className="w-full h-full flex flex-col gap-4 border bg-white rounded p-4">
       {/* Search Bar */}
       {/* <div className="flex gap-2"> */}
       <div className="flex flex-col sm:flex-row gap-2">
@@ -179,7 +180,7 @@ function MapBox() {
                 setElevation
               )
             }
-            className="bg-black text-white px-4 py-2 cursor-pointer mr-2 rounded"
+            className="bg-black text-white px-4 py-2 cursor-pointer mr-2 rounded text-sm sm:text-base"
           >
             Make Path
           </button>
@@ -190,7 +191,7 @@ function MapBox() {
             Reset
           </button>
           <div className="ml-2">
-            <label className="flex items-center gap-2">
+            <label className="flex items-center gap-1">
               <span className="text-sm text-gray-700">Show Pointers</span>
               <label className="relative inline-block w-10 h-6 cursor-pointer">
                 <input
@@ -209,7 +210,8 @@ function MapBox() {
 
       {/* Map Container */}
       {/* <div className="w-full h-[80vh] border"> */}
-      <div className="w-full h-[40vh] lg:h-[80vh] border">
+      {/* <div className="w-full h-[40vh] lg:h-[80vh] border"> */}
+      <div className="w-full h-full border rounded">
         <MapContainer
           center={coordinates}
           zoom={13}

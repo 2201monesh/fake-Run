@@ -88,7 +88,8 @@ function RunCard() {
   return (
     // <div className="w-[35%] h-[88vh] border m-4 p-2 overflow-y-scroll">
     // <div className="w-full lg:w-[35%] h-[70vh] lg:h-[88vh] border m-4 p-2 overflow-y-scroll">
-    <div className="w-full lg:w-[35%] lg:h-[85vh] border my-4 ml-2 mr-4 p-2 overflow-y-auto bg-white rounded">
+    // <div className="w-full lg:w-[35%] lg:h-[85vh] border my-4 ml-2 mr-4 p-2 overflow-y-auto bg-white rounded">
+    <div className="w-full h-full border bg-white rounded p-4 overflow-y-auto">
       <p>Run Details</p>
       <div className="flex w-full items-center justify-between mt-3 p-2">
         <p>Pace Unit</p>

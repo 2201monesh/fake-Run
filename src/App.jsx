@@ -29,9 +29,13 @@ function App() {
       </div>
       <div className="flex-grow w-[100%] h-[100%]">
         {!submitted ? (
-          <div className="flex w-full h-full flex-col lg:flex-row">
-            <MapBox />
-            <RunCard />
+          <div className="flex w-full h-[90vh] flex-col lg:flex-row gap-4 p-4">
+            <div className="w-full lg:w-[70%] h-[55%] lg:h-full">
+              <MapBox />
+            </div>
+            <div className="w-full lg:w-[30%] h-[45%] lg:h-full">
+              <RunCard />
+            </div>
           </div>
         ) : (
           <FinalScreen />
@@ -42,3 +46,10 @@ function App() {
 }
 
 export default App;
+
+{
+  /* <div className="flex w-full h-full flex-col lg:flex-row">
+            <MapBox />
+            <RunCard />
+          </div> */
+}
