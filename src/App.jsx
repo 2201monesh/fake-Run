@@ -15,12 +15,12 @@ function App() {
   };
 
   return (
-    <div className="w-[100%] h-[100%] flex flex-col">
-      <div className="w-full border-b border-black px-4 py-2 flex items-center justify-between">
+    <div className="w-[100%] h-[100%] flex flex-col bg-[#F9FAFB]">
+      <div className="w-full h-[10vh] border-b border-black px-4 py-2 flex items-center justify-between bg-[#FFFFFF]">
         <p className="text-2xl">FakeRun Stats</p>
         {submitted && (
           <button
-            className="bg-black text-white px-2 py-1 cursor-pointer"
+            className="bg-black text-white px-2 py-1 cursor-pointer rounded"
             onClick={handleClick}
           >
             Back to Home

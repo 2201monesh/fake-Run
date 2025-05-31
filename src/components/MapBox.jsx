@@ -152,7 +152,7 @@ function MapBox() {
 
   return (
     // <div className="w-full h-screen p-4 flex flex-col gap-4">
-    <div className="w-full h-[60vh] lg:h-screen p-4 flex flex-col gap-4">
+    <div className="w-full h-[60vh] lg:h-[85vh] p-4 flex flex-col gap-4 border my-4 ml-4 mr-2 bg-white rounded">
       {/* Search Bar */}
       {/* <div className="flex gap-2"> */}
       <div className="flex flex-col sm:flex-row gap-2">
@@ -161,11 +161,11 @@ function MapBox() {
           placeholder="Search location..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="border px-3 py-1 w-[250px]"
+          className="border px-3 py-1 w-[250px] rounded"
         />
         <button
           onClick={handleSearch}
-          className="bg-black cursor-pointer text-white px-4 py-1"
+          className="bg-black cursor-pointer text-white px-4 py-1 rounded"
         >
           Search
         </button>
@@ -179,13 +179,13 @@ function MapBox() {
                 setElevation
               )
             }
-            className="bg-black text-white px-4 py-2 cursor-pointer mr-2"
+            className="bg-black text-white px-4 py-2 cursor-pointer mr-2 rounded"
           >
             Make Path
           </button>
           <button
             onClick={handleReset}
-            className="bg-black text-white px-4 py-2 cursor-pointer mr-2"
+            className="bg-black text-white px-4 py-2 cursor-pointer mr-2 rounded"
           >
             Reset
           </button>
@@ -197,7 +197,7 @@ function MapBox() {
                   type="checkbox"
                   checked={showMarkers}
                   onChange={() => setShowMarkers((prev) => !prev)}
-                  className="sr-only peer"
+                  className="sr-only peer rounded"
                 />
                 <div className="w-10 h-6 bg-gray-300 rounded-full peer peer-checked:bg-green-500 transition-colors"></div>
                 <div className="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full transition-transform peer-checked:translate-x-4"></div>

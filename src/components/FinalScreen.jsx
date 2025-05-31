@@ -73,8 +73,8 @@ function FinalScreen() {
   const center = pathCoords.length > 0 ? pathCoords[0] : [28.6129, 77.2295];
 
   return (
-    <div className="w-[100%] h-[100%] flex flex-col justify-center items-center border">
-      <div className="w-[65%] h-[75%] border overflow-hidden mt-6 relative">
+    <div className="w-full h-full flex flex-col items-center px-2">
+      <div className="w-full lg:w-[65%] h-[60vh] lg:h-[75%] border overflow-hidden mt-4 relative rounded-md">
         <div className="lg:absolute lg:top-2 lg:right-2 lg:bg-opacity-80 lg:z-[1000] bg-white text-sm px-3 py-2 rounded shadow max-w-xs mt-2">
           <p className="flex items-center font-semibold text-gray-700 mb-1">
             {/* <MdLocationOn className="mr-1 text-red-500" /> Location: {runName} */}
@@ -114,11 +114,11 @@ function FinalScreen() {
       </div>
 
       {/* Cards container */}
-      <div className="w-[65%] cards flex justify-between mt-6 space-x-4">
+      <div className="w-full lg:w-[65%] flex flex-wrap justify-center lg:justify-between gap-4 mt-4 pb-3">
         {cards.map((card, index) => (
           <div
             key={index}
-            className="w-48 h-32 rounded-lg flex flex-col items-center text-center"
+            className="w-[45%] sm:w-40 h-28 rounded-lg flex flex-col items-center text-center p-2 bg-white shadow"
           >
             <span>{card.icon}</span>
             <h3 className="font-semibold text-md text-gray-600">

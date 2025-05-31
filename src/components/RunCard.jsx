@@ -88,14 +88,14 @@ function RunCard() {
   return (
     // <div className="w-[35%] h-[88vh] border m-4 p-2 overflow-y-scroll">
     // <div className="w-full lg:w-[35%] h-[70vh] lg:h-[88vh] border m-4 p-2 overflow-y-scroll">
-    <div className="w-full lg:w-[35%] lg:h-[88vh] border m-4 p-2 overflow-y-auto">
+    <div className="w-full lg:w-[35%] lg:h-[85vh] border my-4 ml-2 mr-4 p-2 overflow-y-auto bg-white rounded">
       <p>Run Details</p>
       <div className="flex w-full items-center justify-between mt-3 p-2">
         <p>Pace Unit</p>
         <select
           value={unit}
           onChange={handleChange}
-          className="border px-2 py-1 text-sm cursor-pointer outline-none"
+          className="border px-2 py-1 text-sm cursor-pointer outline-none rounded"
         >
           <option value="min/km">min/km</option>
           <option value="min/miles">min/miles</option>
@@ -104,7 +104,7 @@ function RunCard() {
       <div className="run-stats bg-gray-50 w-[100%] mt-3 p-2 mb-6 sm:mb-4 lg:h-[40%]">
         <p className="mb-1">Run Stats</p>
         <div className="grid grid-cols-2 gap-2 h-[85%]">
-          <div className="bg-white border p-2 flex items-center justify-center flex-col">
+          <div className="bg-white border p-2 flex items-center justify-center flex-col rounded">
             <span>
               <GiPathDistance size={20} />
             </span>
@@ -112,7 +112,7 @@ function RunCard() {
               Distance <br /> {totalDistance} {totalDistance ? "km" : ""}
             </p>
           </div>
-          <div className="bg-white border p-2 flex items-center justify-center flex-col">
+          <div className="bg-white border p-2 flex items-center justify-center flex-col rounded">
             <span>
               <MdOutlineTimer size={20} />
             </span>
@@ -120,7 +120,7 @@ function RunCard() {
               Duration <br /> {duration} {duration ? "mins" : ""}
             </p>
           </div>
-          <div className="bg-white border p-2 flex items-center justify-center flex-col">
+          <div className="bg-white border p-2 flex items-center justify-center flex-col rounded">
             <span>
               <IoFootstepsOutline size={20} />
             </span>
@@ -128,7 +128,7 @@ function RunCard() {
               Steps <br /> {stepsTaken}
             </p>
           </div>
-          <div className="bg-white border p-2 flex items-center justify-center flex-col">
+          <div className="bg-white border p-2 flex items-center justify-center flex-col rounded">
             <span>
               <SiSpeedtest size={20} />
             </span>
@@ -160,7 +160,7 @@ function RunCard() {
         <input
           value={runName}
           type="text"
-          className="border w-full px-2 py-1"
+          className="border w-full px-2 py-1 rounded"
           placeholder="Enter Run Name here..."
           //   onChange={(e) => setRunName(e.target.value) }
           onChange={(e) => {
@@ -199,7 +199,7 @@ function RunCard() {
         <textarea
           value={description}
           name="textarea"
-          className="w-full p-2 text-sm border"
+          className="w-full p-2 text-sm border rounded"
           placeholder="Enter description here..."
           //   onChange={(e) => setDescription(e.target.value)}
           onChange={(e) => {
@@ -215,7 +215,7 @@ function RunCard() {
       </div>
       <div className="w-[100%] mt-2 p-2">
         <button
-          className="w-full border py-1 bg-black text-white cursor-pointer"
+          className="w-full border py-1 bg-black text-white cursor-pointer rounded"
           onClick={handleSubmit}
         >
           Make Run File
